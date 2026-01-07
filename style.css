@@ -1,0 +1,180 @@
+/* ===== BASE ===== */
+body {
+  font-family: Arial, sans-serif;
+  background: linear-gradient(to bottom, #8ec5fc, #e0c3fc);
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+.container {
+  max-width: 900px;
+  margin: 40px auto;
+  background: rgba(255,255,255,0.95);
+  padding: 40px;
+  border-radius: 15px;
+}
+
+/* ===== CARDS ===== */
+.character-card img {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ===== BANNER (DESKTOP) ===== */
+.hero {
+  height: 250px;
+  position: relative;
+  overflow: hidden;
+}
+.hero {
+  margin-bottom: 40px;
+}
+.hero-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.hero-content {
+  position: absolute;
+  top: 20%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.hero-avatar {
+  width: 310px;
+  position: relative;
+  top: -120px;
+}
+
+.hero-logo {
+  width: 200px;
+  position: relative;
+  top: -60px;
+}
+
+/* ===== MENU ===== */
+.menu-section {
+  display: flex;
+  justify-content: center;
+}
+
+.main-nav {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.main-nav a {
+  background: #6a4fcf;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  text-decoration: none;
+  flex: 1;
+  text-align: center;
+}
+
+/* ===== SOCIAL ===== */
+.social-buttons {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+}
+
+.btn {
+  padding: 12px 25px;
+  border-radius: 8px;
+  color: white;
+  text-decoration: none;
+}
+
+.fb { background:#3b5998; }
+.yt { background:#ff0000; }
+.ig { background:#e1306c; }
+
+/* ===== RESPONSIVE (MÓVIL) ===== */
+@media (max-width:500px) {
+  .hero {
+    height: 155px;
+  }
+
+  .hero-content {
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 0 5px;
+  }
+
+  .hero-avatar {
+    width: 120px;
+    top: -40px;
+  }
+
+  .hero-logo {
+    width: 100px;
+    top: 10px;
+  }
+
+  .main-nav a {
+    flex: 1 1 25%;
+  }
+
+  .social-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+/* ===== TEXTOS ===== */
+.section-title {
+  text-transform: uppercase;
+  text-decoration: underline;
+  letter-spacing: 2px;
+}
+
+.character-name {
+  text-transform: uppercase;
+  font-size: 22px;
+  font-weight: bold;
+  margin: 15px 0 5px;
+}
+
+.character-title {
+  text-align: center;
+}
+
+.character-quote {
+  font-style: italic;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.follow-text {
+  text-align: center;
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+  color: #444;
+  margin-bottom: 15px;
+}
+
+#lore {
+  margin-top: 40px;
+  text-align: center;
+}
+
+.lore-title {
+  font-weight: 600;
+  margin-bottom: 8px;
+  letter-spacing: 0.5px;
+}
+
+.lore-audio audio {
+  width: 100%;
+  max-width: 400px;
+}
