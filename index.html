@@ -144,27 +144,20 @@ if ('serviceWorker' in navigator) {
 <section id="juego">
   <h2>Snake</h2>
 
-  <!-- Canvas obligatorio -->
-  <canvas id="gc" width="400" height="400"></canvas>
+  <canvas id="snakeCanvas" width="400" height="400"></canvas>
 
-  <!-- Botones de control del juego -->
-  <div>
-    <button onclick="Snake.start(8)">Jugar</button>
-    <button onclick="Snake.stop()">Detener</button>
-  </div>
+  <button onclick="SnakeGame.start()">Jugar</button>
+  <button onclick="SnakeGame.stop()">Detener</button>
 
-  <!-- Controles táctiles (móvil) -->
   <div id="controls">
-    <button onclick="Snake.action('up')">⬆️</button><br>
-    <button onclick="Snake.action('left')">⬅️</button>
-    <button onclick="Snake.action('down')">⬇️</button>
-    <button onclick="Snake.action('right')">➡️</button>
+    <button onclick="SnakeGame.action('up')">⬆️</button><br>
+    <button onclick="SnakeGame.action('left')">⬅️</button>
+    <button onclick="SnakeGame.action('down')">⬇️</button>
+    <button onclick="SnakeGame.action('right')">➡️</button>
   </div>
 </section>
 
-<!-- Carga del juego -->
 <script src="game.js"></script>
-
 
     <footer>
         <p>Lo que aprieta el alma, la mano no lo puede soltar.</p>
