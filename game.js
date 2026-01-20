@@ -75,11 +75,11 @@ const SnakeGame = (() => {
     );
   }
 
-  function start() {
-    stop();      // evita duplicar loops
-    init();
-    loop = setInterval(update, 100);
-  }
+  start: function (fps = 15) {
+  setup();
+  clearInterval(intervalID);
+  intervalID = setInterval(game.loop, 1000 / fps);
+},
 
   function stop() {
     clearInterval(loop);
