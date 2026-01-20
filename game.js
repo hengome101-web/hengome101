@@ -26,9 +26,9 @@ const SnakeGame = (() => {
 
   function keyControl(e) {
     switch (e.key) {
-      case "ArrowUp": if (direction.y === 0) direction = { x: 0, y: -1 }; break;
-      case "ArrowDown": if (direction.y === 0) direction = { x: 0, y: 1 }; break;
-      case "ArrowLeft": if (direction.x === 0) direction = { x: -1, y: 0 }; break;
+      case "ArrowUp":    if (direction.y === 0) direction = { x: 0, y: -1 }; break;
+      case "ArrowDown":  if (direction.y === 0) direction = { x: 0, y: 1 }; break;
+      case "ArrowLeft":  if (direction.x === 0) direction = { x: -1, y: 0 }; break;
       case "ArrowRight": if (direction.x === 0) direction = { x: 1, y: 0 }; break;
     }
   }
@@ -42,7 +42,7 @@ const SnakeGame = (() => {
       y: snake[0].y + direction.y
     };
 
-    // paredes
+    // choque con paredes
     if (head.x < 0 || head.y < 0 || head.x >= tileCount || head.y >= tileCount) {
       stop();
       return;
@@ -64,22 +64,22 @@ const SnakeGame = (() => {
       snake.pop();
     }
 
-    // dibujar comida
+    // comida
     ctx.fillStyle = "red";
     ctx.fillRect(food.x * size, food.y * size, size, size);
 
-    // dibujar snake
+    // snake
     ctx.fillStyle = "lime";
     snake.forEach(p =>
       ctx.fillRect(p.x * size, p.y * size, size - 1, size - 1)
     );
   }
 
-  start: function (fps = 15) {
-  setup();
-  clearInterval(intervalID);
-  intervalID = setInterval(game.loop, 1000 / fps);
-},
+  function start(fps = 10) {
+    init();
+    clearInterval(loop);
+    loop = setInterval(update, 1000 / fps);
+  }
 
   function stop() {
     clearInterval(loop);
