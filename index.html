@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Qualtya</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<script>
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('sw.js')
+    .then(() => console.log('Modo offline activo'))
+    .catch(err => console.log('SW error', err));
+}
+</script>
+
+<body>
+<div class="container">
+
+    <!-- Banner -->
+    <div class="hero">
+        <video class="hero-video" autoplay muted loop playsinline>
+            <source src="Banner.mp4" type="video/mp4">
+            Tu navegador no soporta vídeos.
+        </video>
+
+        <div class="hero-content">
+            <img src="Avatar.png" alt="Avatar Logo" class="hero-avatar">
+            <img src="Nombre.png" alt="Qualtya" class="hero-logo">
+        </div>
+    </div>
+
+    <!-- Menú -->
+    <section class="menu-section">
+        <nav class="main-nav">
+            <a href="#characters">Personajes</a>
+            <a href="#animations">Animaciones</a>
+            <a href="#bios">BIOS</a>
+            <a href="#lore">Lore</a>
+            <a href="#news">Noticias</a>
+            <a href="#subscribe">Suscripción</a>
+            <a href="#contact">Contacto</a>
+        </nav>
+    </section>
+
+    <p>
+        En esta página desarrollaremos el mundo de donde nacen Jafe y sus amigos.
+        Aquí podrás explorar historias, personajes y aventuras que forman parte
+        de este universo único.
+    </p>
+
+<section id="characters">
+    <h2 class="section-title">Personaje destacado</h2>
+    
+    <div class="character-card">
+        <img src="Personaje1.jpg" alt="Jafe explorando Qualtya">
+        
+        <h3 class="character-name">Jafe Ali</h3>
+        
+        <p class="character-title">
+            Apodo / título: <strong>“El guardián del silencio que aprendió a moverse en el caos”</strong>
+        </p>
+        
+        <div class="character-bio">
+            
+            <p><strong>Edad</strong></p>
+            <p>Inicio de la historia: 4 años<br>
+                Edad actual: 17 años</p>
+            
+            <p><strong>Género:</strong> Masculino</p>
+            
+            <p><strong>Rol narrativo:</strong><br>
+                Protagonista sensible que encarna la memoria del alma y que al crecer se convierte en protector activo de aquello que siente.
+            </p>
+            
+            <p><strong>Ocupación:</strong> Cadete mensajero del ejército</p>
+            
+            <h4 class="bio-subtitle">Personalidad</h4>
+            <p>
+                Jafe es reservado, empático y profundamente perceptivo. Desde niño aprendió a escuchar más de lo que habla, a leer gestos,
+                silencios y emociones no dichas.
+            </p>
+            
+            <p>
+                No es impulsivo; actúa con calma incluso en situaciones extremas. Prioriza la seguridad y el bienestar de otros,
+                no por heroísmo grandilocuente, sino por la conexión emocional que siente con cada vida cercana.
+            </p>
+            
+            <h4 class="bio-subtitle">Habilidades y dones sensibles</h4>
+            <p>
+                <strong>Don principal:</strong> Magnetismo sensible. Capacidad limitada de manipular fuerzas magnéticas cuando su emoción
+                está enfocada.
+            </p>
+            
+            <h4 class="bio-subtitle">Historia</h4>
+            <p>
+                Jafe nace en una familia humilde dentro de la antigua Casa Ali, portadora de sensibilidades olvidadas...
+            </p>
+            
+            <h4 class="bio-subtitle">Arquetipo final</h4>
+            <p class="character-quote">
+                “El niño que guardó la memoria del alma y aprendió a caminar entre la guerra sin perderla.”
+            </p>
+            
+        </div>
+    </div>
+</section>>
+
+    <section id="animations">
+        <h2>Galería de Animaciones</h2>
+        <div class="gallery">
+            <a href="personaje1.html"><img src="personaje1.jpeg"></a>
+            <a href="personaje2.html"><img src="personaje2.jpeg"></a>
+            <a href="personaje3.html"><img src="personaje3.jpeg"></a>
+        </div>
+    </section>
+    
+    <section id="lore">
+  <h2>Lore</h2>
+  <div class="lore-audio">
+    <p class="lore-title">Prólogo — El origen de Qualtya</p>
+    <audio controls>
+      <source src="prologo-qualtya.mp3" type="audio/mpeg">
+      Tu navegador no soporta audio.
+    </audio>
+  </div>
+
+</section>
+    
+    <section id="news"><h2>Noticias</h2></section>
+
+    <p class="follow-text">
+  Síguenos en las redes. Qualtya vive donde vayas tú.
+</p>
+
+    <section id="contact"><h2>Contacto</h2></section>
+
+    <div class="social-buttons">
+        <a class="btn fb" href="https://www.facebook.com/alfomdecocle">Facebook</a>
+        <a class="btn yt" href="  https://www.youtube.com/@Hig0-s">YouTube</a>
+        <a class="btn ig" href="https://www.instagram.com/alfomdecocle?igsh=MTNqOXV3empkanQ5MA==">Instagram</a>
+    </div>
+
+<section id="snake-game">
+  <h2>Snake</h2>
+
+  <canvas id="snakeCanvas" width="400" height="400"></canvas>
+
+  <div>
+    <button onclick="SnakeGame.start()">Jugar</button>
+    <button onclick="SnakeGame.stop()">Detener</button>
+  </div>
+</section>
+
+<script src="games.js"></script>
+
+
+    <footer>
+        <p>Lo que aprieta el alma, la mano no lo puede soltar.</p>
+        <p>© 2025 Universo Qualtya</p>
+    </footer>
+
+</div>
+</body>
+</html>
