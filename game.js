@@ -6,6 +6,7 @@ const SnakeGame = (() => {
 
   let snake, direction, food, loop;
 
+  // ===== INICIALIZA EL JUEGO =====
   function init() {
     canvas = document.getElementById("snakeCanvas");
     ctx = canvas.getContext("2d");
@@ -17,6 +18,7 @@ const SnakeGame = (() => {
     document.addEventListener("keydown", keyControl);
   }
 
+  // ===== COMIDA ALEATORIA =====
   function randomFood() {
     return {
       x: Math.floor(Math.random() * tileCount),
@@ -24,6 +26,7 @@ const SnakeGame = (() => {
     };
   }
 
+  // ===== TECLADO =====
   function keyControl(e) {
     switch (e.key) {
       case "ArrowUp":    if (direction.y === 0) direction = { x: 0, y: -1 }; break;
@@ -33,6 +36,17 @@ const SnakeGame = (() => {
     }
   }
 
+  // ===== BOTONES TÁCTILES =====
+  function action(dir) {
+    switch (dir) {
+      case "up":    if (direction.y === 0) direction = { x: 0, y: -1 }; break;
+      case "down":  if (direction.y === 0) direction = { x: 0, y: 1 }; break;
+      case "left":  if (direction.x === 0) direction = { x: -1, y: 0 }; break;
+      case "right": if (direction.x === 0) direction = { x: 1, y: 0 }; break;
+    }
+  }
+
+  // ===== LOOP DEL JUEGO =====
   function update() {
     ctx.fillStyle = "#111";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
@@ -75,6 +89,7 @@ const SnakeGame = (() => {
     );
   }
 
+  // ===== CONTROL =====
   function start(fps = 10) {
     init();
     clearInterval(loop);
@@ -85,6 +100,7 @@ const SnakeGame = (() => {
     clearInterval(loop);
   }
 
-  return { start, stop };
+  // ===== EXPONER AL HTML =====
+  return { start, stop, action };
 
 })();
