@@ -141,18 +141,29 @@ if ('serviceWorker' in navigator) {
         <a class="btn ig" href="https://www.instagram.com/alfomdecocle?igsh=MTNqOXV3empkanQ5MA==">Instagram</a>
     </div>
 
-<section id="snake-game">
+<section id="juego">
   <h2>Snake</h2>
 
-  <canvas id="snakeCanvas" width="400" height="400"></canvas>
+  <!-- Canvas obligatorio -->
+  <canvas id="gc" width="400" height="400"></canvas>
 
+  <!-- Botones de control del juego -->
   <div>
-    <button onclick="SnakeGame.start()">Jugar</button>
-    <button onclick="SnakeGame.stop()">Detener</button>
+    <button onclick="Snake.start(8)">Jugar</button>
+    <button onclick="Snake.stop()">Detener</button>
+  </div>
+
+  <!-- Controles táctiles (móvil) -->
+  <div id="controls">
+    <button onclick="Snake.action('up')">⬆️</button><br>
+    <button onclick="Snake.action('left')">⬅️</button>
+    <button onclick="Snake.action('down')">⬇️</button>
+    <button onclick="Snake.action('right')">➡️</button>
   </div>
 </section>
 
-<script src="games.js"></script>
+<!-- Carga del juego -->
+<script src="game.js"></script>
 
 
     <footer>
