@@ -12,7 +12,7 @@ const SnakeGame = (() => {
     ctx = canvas.getContext("2d");
 
     snake = [{ x: 10, y: 10 }];
-    direction = { x: 0, y: 0 };
+    direction = { x: 1, y: 0 };
     food = randomFood();
 
     document.addEventListener("keydown", keyControl);
@@ -90,7 +90,7 @@ const SnakeGame = (() => {
   }
 
   // ===== CONTROL =====
-  function start(fps = 10) {
+  function start(fps = 15) {
     init();
     clearInterval(loop);
     loop = setInterval(update, 1000 / fps);
