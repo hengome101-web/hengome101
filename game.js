@@ -1,3 +1,4 @@
+// ===== SNAKE GAME COMPLETO =====
 const SnakeGame = (() => {
 
   let canvas, ctx;
@@ -33,7 +34,6 @@ const SnakeGame = (() => {
     canvas = document.getElementById("snakeCanvas");
     ctx = canvas.getContext("2d");
 
-    // Tamaño de tiles dinámico según canvas
     tileCount = 20;
     size = canvas.width / tileCount;
 
@@ -42,7 +42,6 @@ const SnakeGame = (() => {
     food = randomFood();
 
     document.addEventListener("keydown", keyControl);
-
     canvas.addEventListener("touchstart", handleTouchStart, { passive: true });
     canvas.addEventListener("touchend", handleTouchEnd, { passive: true });
   }
@@ -130,3 +129,27 @@ const SnakeGame = (() => {
   };
 
 })();
+
+// ===== BOTONES HTML =====
+const startBtn = document.getElementById("startBtn");
+const stopBtn = document.getElementById("stopBtn");
+const upBtn = document.getElementById("upBtn");
+const downBtn = document.getElementById("downBtn");
+const leftBtn = document.getElementById("leftBtn");
+const rightBtn = document.getElementById("rightBtn");
+
+startBtn.addEventListener("click", () => SnakeGame.start());
+stopBtn.addEventListener("click", () => SnakeGame.stop());
+
+upBtn.addEventListener("click", () => {
+  if (SnakeGame.direction.y === 0) SnakeGame.direction = { x: 0, y: -1 };
+});
+downBtn.addEventListener("click", () => {
+  if (SnakeGame.direction.y === 0) SnakeGame.direction = { x: 0, y: 1 };
+});
+leftBtn.addEventListener("click", () => {
+  if (SnakeGame.direction.x === 0) SnakeGame.direction = { x: -1, y: 0 };
+});
+rightBtn.addEventListener("click", () => {
+  if (SnakeGame.direction.x === 0) SnakeGame.direction = { x: 1, y: 0 };
+});
