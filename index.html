@@ -104,18 +104,18 @@ if ('serviceWorker' in navigator) {
             
         </div>
     </div>
-</section>>
+</section>
 
-    <section id="animations">
-        <h2>Galería de Animaciones</h2>
-        <div class="gallery">
-            <a href="personaje1.html"><img src="personaje1.jpeg"></a>
-            <a href="personaje2.html"><img src="personaje2.jpeg"></a>
-            <a href="personaje3.html"><img src="personaje3.jpeg"></a>
-        </div>
-    </section>
-    
-    <section id="lore">
+<section id="animations">
+    <h2>Galería de Animaciones</h2>
+    <div class="gallery">
+        <a href="personaje1.html"><img src="personaje1.jpeg"></a>
+        <a href="personaje2.html"><img src="personaje2.jpeg"></a>
+        <a href="personaje3.html"><img src="personaje3.jpeg"></a>
+    </div>
+</section>
+
+<section id="lore">
   <h2>Lore</h2>
   <div class="lore-audio">
     <p class="lore-title">Prólogo — El origen de Qualtya</p>
@@ -124,46 +124,73 @@ if ('serviceWorker' in navigator) {
       Tu navegador no soporta audio.
     </audio>
   </div>
-
 </section>
-    
-    <section id="news"><h2>Noticias</h2></section>
 
-    <p class="follow-text">
+<section id="news"><h2>Noticias</h2></section>
+
+<p class="follow-text">
   Síguenos en las redes. Qualtya vive donde vayas tú.
 </p>
 
-    <section id="contact"><h2>Contacto</h2></section>
+<section id="contact"><h2>Contacto</h2></section>
 
-    <div class="social-buttons">
-        <a class="btn fb" href="https://www.facebook.com/alfomdecocle">Facebook</a>
-        <a class="btn yt" href="  https://www.youtube.com/@Hig0-s">YouTube</a>
-        <a class="btn ig" href="https://www.instagram.com/alfomdecocle?igsh=MTNqOXV3empkanQ5MA==">Instagram</a>
-    </div>
+<div class="social-buttons">
+    <a class="btn fb" href="https://www.facebook.com/alfomdecocle">Facebook</a>
+    <a class="btn yt" href="https://www.youtube.com/@Hig0-s">YouTube</a>
+    <a class="btn ig" href="https://www.instagram.com/alfomdecocle?igsh=MTNqOXV3empkanQ5MA==">Instagram</a>
+</div>
 
-<section id="juego">
+<!-- ===== SNAKE GAME ===== -->
+<section id="snake-game">
   <h2>Snake</h2>
 
+  <!-- Canvas responsive -->
   <canvas id="snakeCanvas" width="400" height="400"></canvas>
 
-  <button onclick="SnakeGame.start()">Jugar</button>
-  <button onclick="SnakeGame.stop()">Detener</button>
-
-  <div id="controls">
-    <button onclick="SnakeGame.action('up')">⬆️</button><br>
-    <button onclick="SnakeGame.action('left')">⬅️</button>
-    <button onclick="SnakeGame.action('down')">⬇️</button>
-    <button onclick="SnakeGame.action('right')">➡️</button>
+  <!-- Contenedor de botones ergonómico -->
+  <div class="game-controls">
+    <button id="startBtn">Jugar</button>
+    <button id="stopBtn">Detener</button>
+    <button id="upBtn">⬆️</button>
+    <button id="leftBtn">⬅️</button>
+    <button id="downBtn">⬇️</button>
+    <button id="rightBtn">➡️</button>
   </div>
 </section>
 
 <script src="game.js"></script>
 
-    <footer>
-        <p>Lo que aprieta el alma, la mano no lo puede soltar.</p>
-        <p>© 2025 Universo Qualtya</p>
-    </footer>
+<script>
+  // Botones funcionales
+  const startBtn = document.getElementById("startBtn");
+  const stopBtn = document.getElementById("stopBtn");
+  const upBtn = document.getElementById("upBtn");
+  const downBtn = document.getElementById("downBtn");
+  const leftBtn = document.getElementById("leftBtn");
+  const rightBtn = document.getElementById("rightBtn");
+
+  startBtn.addEventListener("click", () => SnakeGame.start());
+  stopBtn.addEventListener("click", () => SnakeGame.stop());
+
+  upBtn.addEventListener("click", () => {
+    if (SnakeGame.direction?.y === 0) SnakeGame.direction = { x: 0, y: -1 };
+  });
+  downBtn.addEventListener("click", () => {
+    if (SnakeGame.direction?.y === 0) SnakeGame.direction = { x: 0, y: 1 };
+  });
+  leftBtn.addEventListener("click", () => {
+    if (SnakeGame.direction?.x === 0) SnakeGame.direction = { x: -1, y: 0 };
+  });
+  rightBtn.addEventListener("click", () => {
+    if (SnakeGame.direction?.x === 0) SnakeGame.direction = { x: 1, y: 0 };
+  });
+</script>
+
+<footer>
+    <p>Lo que aprieta el alma, la mano no lo puede soltar.</p>
+    <p>© 2025 Universo Qualtya</p>
+</footer>
 
 </div>
 </body>
-</html>
+    </html>
