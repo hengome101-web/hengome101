@@ -107,6 +107,30 @@ body {
   touch-action: none;
 }
 
+/* ===== BOTONES DE JUEGO ===== */
+.game-controls {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.game-controls button {
+  padding: 15px 20px;
+  font-size: 18px;
+  border-radius: 8px;
+  border: none;
+  background-color: #6a4fcf;
+  color: white;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.game-controls button:hover {
+  background-color: #5a3fc0;
+}
+
 /* ===== RESPONSIVO (MÓVIL) ===== */
 @media (max-width: 600px) {
 
@@ -150,6 +174,12 @@ body {
     height: 95vw;
     max-width: 360px;
     max-height: 360px;
+  }
+
+  /* Botones de juego móviles */
+  .game-controls button {
+    padding: 20px;
+    font-size: 20px;
   }
 }
 
@@ -200,4 +230,4 @@ body {
 .lore-audio audio {
   width: 100%;
   max-width: 400px;
-}
+  }
