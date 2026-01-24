@@ -1,10 +1,8 @@
-// ===== SNAKE GAME COMPLETO =====
 const SnakeGame = (() => {
-
   let canvas, ctx;
   let size, tileCount;
   let snake, direction, food, loop;
-  
+
   // ===== CONTROLES TÁCTILES =====
   let touchStartX = 0;
   let touchStartY = 0;
@@ -113,24 +111,22 @@ const SnakeGame = (() => {
   function start() {
     stop();
     init();
-    loop = setInterval(update, 1000);
+    loop = setInterval(update, 200); // velocidad reducida para móviles
   }
 
   function stop() {
     clearInterval(loop);
   }
 
-  // ===== Exponer dirección para botones =====
   return {
     start,
     stop,
     get direction() { return direction; },
     set direction(val) { direction = val; }
   };
-
 })();
 
-// ===== BOTONES HTML =====
+// ===== BOTONES =====
 const startBtn = document.getElementById("startBtn");
 const stopBtn = document.getElementById("stopBtn");
 const upBtn = document.getElementById("upBtn");
