@@ -6,19 +6,45 @@ const SnakeGame = (() => {
 
   let snake, direction, food, loop;
 
-  // ===== INICIALIZA EL JUEGO =====
+  // ====== CONTROLES TÁCTILES ======
+  let touchStartX = 0;
+  let touchStartY = 0;
+
+  function handleTouchStart(e) {
+    const t = e.touches[0];
+    touchStartX = t.clientX;
+    touchStartY = t.clientY;
+  }
+
+  function handleTouchEnd(e) {
+    const t = e.changedTouches[0];
+    const dx = t.clientX - touchStartX;
+    const dy = t.clientY - touchStartY;
+
+    if (Math.abs(dx) > Math.abs(dy)) {
+      if (dx > 0 && direction.x === 0) direction = { x: 1, y: 0 };
+      if (dx < 0 && direction.x === 0) direction = { x: -1, y: 0 };
+    } else {
+      if (dy > 0 && direction.y === 0) direction = { x: 0, y: 1 };
+      if (dy < 0 && direction.y === 0) direction = { x: 0, y: -1 };
+    }
+  }
+
+  // ====== INICIO ======
   function init() {
     canvas = document.getElementById("snakeCanvas");
     ctx = canvas.getContext("2d");
 
     snake = [{ x: 10, y: 10 }];
-    direction = { x: 1, y: 0 };
+    direction = { x: 0, y: 0 };
     food = randomFood();
 
     document.addEventListener("keydown", keyControl);
+
+    canvas.addEventListener("touchstart", handleTouchStart, { passive: true });
+    canvas.addEventListener("touchend", handleTouchEnd, { passive: true });
   }
 
-  // ===== COMIDA ALEATORIA =====
   function randomFood() {
     return {
       x: Math.floor(Math.random() * tileCount),
@@ -26,27 +52,25 @@ const SnakeGame = (() => {
     };
   }
 
-  // ===== TECLADO =====
+  // ====== TECLADO (PC) ======
   function keyControl(e) {
     switch (e.key) {
-      case "ArrowUp":    if (direction.y === 0) direction = { x: 0, y: -1 }; break;
-      case "ArrowDown":  if (direction.y === 0) direction = { x: 0, y: 1 }; break;
-      case "ArrowLeft":  if (direction.x === 0) direction = { x: -1, y: 0 }; break;
-      case "ArrowRight": if (direction.x === 0) direction = { x: 1, y: 0 }; break;
+      case "ArrowUp":
+        if (direction.y === 0) direction = { x: 0, y: -1 };
+        break;
+      case "ArrowDown":
+        if (direction.y === 0) direction = { x: 0, y: 1 };
+        break;
+      case "ArrowLeft":
+        if (direction.x === 0) direction = { x: -1, y: 0 };
+        break;
+      case "ArrowRight":
+        if (direction.x === 0) direction = { x: 1, y: 0 };
+        break;
     }
   }
 
-  // ===== BOTONES TÁCTILES =====
-  function action(dir) {
-    switch (dir) {
-      case "up":    if (direction.y === 0) direction = { x: 0, y: -1 }; break;
-      case "down":  if (direction.y === 0) direction = { x: 0, y: 1 }; break;
-      case "left":  if (direction.x === 0) direction = { x: -1, y: 0 }; break;
-      case "right": if (direction.x === 0) direction = { x: 1, y: 0 }; break;
-    }
-  }
-
-  // ===== LOOP DEL JUEGO =====
+  // ====== GAME LOOP ======
   function update() {
     ctx.fillStyle = "#111";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
@@ -56,7 +80,7 @@ const SnakeGame = (() => {
       y: snake[0].y + direction.y
     };
 
-    // choque con paredes
+    // paredes
     if (head.x < 0 || head.y < 0 || head.x >= tileCount || head.y >= tileCount) {
       stop();
       return;
@@ -89,18 +113,16 @@ const SnakeGame = (() => {
     );
   }
 
-  // ===== CONTROL =====
-  function start(fps = 15) {
+  function start() {
+    stop();
     init();
-    clearInterval(loop);
-    loop = setInterval(update, 1000 / fps);
+    loop = setInterval(update, 100);
   }
 
   function stop() {
     clearInterval(loop);
   }
 
-  // ===== EXPONER AL HTML =====
-  return { start, stop, action };
+  return { start, stop };
 
 })();
