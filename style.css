@@ -7,23 +7,23 @@ body {
   overflow-x: hidden;
 }
 
-.contenedor {
+.container {
   max-width: 900px;
   margin: 40px auto;
-  background: rgba(255, 255, 255, 0.95);
+  background: rgba(255,255,255,0.95);
   padding: 40px;
   border-radius: 15px;
 }
 
-/* ===== TARJETAS ===== */
-.tarjeta-personaje img {
+/* ===== CARDS / PERSONAJES ===== */
+.character-card img {
   width: 100%;
   max-width: 100%;
   height: auto;
   display: block;
 }
 
-/* ===== BANNER (ESCRITORIO) ===== */
+/* ===== BANNER (DESKTOP) ===== */
 .hero {
   height: 250px;
   position: relative;
@@ -31,13 +31,13 @@ body {
   margin-bottom: 40px;
 }
 
-.video-hero {
+.hero-video {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-.contenido-hero {
+.hero-content {
   position: absolute;
   top: 20%;
   width: 100%;
@@ -58,19 +58,19 @@ body {
   top: -60px;
 }
 
-/* ===== MENÚ ===== */
+/* ===== MENU ===== */
 .menu-section {
   display: flex;
   justify-content: center;
 }
 
-.nav-main {
+.main-nav {
   display: flex;
   gap: 15px;
   flex-wrap: wrap;
 }
 
-.nav-main a {
+.main-nav a {
   background: #6a4fcf;
   color: white;
   padding: 10px;
@@ -78,6 +78,11 @@ body {
   text-decoration: none;
   flex: 1;
   text-align: center;
+  transition: background 0.2s;
+}
+
+.main-nav a:hover {
+  background: #5a3fc0;
 }
 
 /* ===== SOCIAL ===== */
@@ -85,6 +90,7 @@ body {
   display: flex;
   gap: 15px;
   justify-content: center;
+  margin-bottom: 20px;
 }
 
 .btn {
@@ -92,95 +98,15 @@ body {
   border-radius: 8px;
   color: white;
   text-decoration: none;
-}
-
-.fb { background: #3b5998; }
-.yt { background: #ff0000; }
-.ig { background: #e1306c; }
-
-/* ===== SNAKE GAME ===== */
-#snakeCanvas {
-  display: block;
-  margin: 20px auto;
-  background: #111;
-  border-radius: 14px;
-  touch-action: none;
-}
-
-/* ===== BOTONES DE JUEGO ===== */
-.game-controls {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 15px;
-}
-
-.game-controls button {
-  padding: 15px 20px;
-  font-size: 18px;
-  border-radius: 8px;
-  border: none;
-  background-color: #6a4fcf;
-  color: white;
-  cursor: pointer;
   transition: background 0.2s;
 }
 
-.game-controls button:hover {
-  background-color: #5a3fc0;
-}
+.fb { background:#3b5998; }
+.yt { background:#ff0000; }
+.ig { background:#e1306c; }
 
-/* ===== RESPONSIVO (MÓVIL) ===== */
-@media (max-width: 600px) {
-
-  .contenedor {
-    padding: 15px;
-    margin: 15px auto;
-  }
-
-  .hero {
-    height: 155px;
-  }
-
-  .contenido-hero {
-    top: 50%;
-    transform: translateY(-50%);
-    padding: 0 5px;
-  }
-
-  .hero-avatar {
-    width: 120px;
-    top: -40px;
-  }
-
-  .hero-logo {
-    width: 100px;
-    top: 10px;
-  }
-
-  .nav-main a {
-    flex: 1 1 45%;
-  }
-
-  .social-buttons {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  /* Canvas ergonómico móvil */
-  #snakeCanvas {
-    width: 95vw;
-    height: 95vw;
-    max-width: 360px;
-    max-height: 360px;
-  }
-
-  /* Botones de juego móviles */
-  .game-controls button {
-    padding: 20px;
-    font-size: 20px;
-  }
+.btn:hover {
+  opacity: 0.85;
 }
 
 /* ===== TEXTOS ===== */
@@ -216,12 +142,12 @@ body {
   margin-bottom: 15px;
 }
 
-#tradicion {
+#lore {
   margin-top: 40px;
   text-align: center;
 }
 
-.tradicion-title {
+.lore-title {
   font-weight: 600;
   margin-bottom: 8px;
   letter-spacing: 0.5px;
@@ -230,4 +156,88 @@ body {
 .lore-audio audio {
   width: 100%;
   max-width: 400px;
+}
+
+/* ===== SNAKE GAME ===== */
+#snakeCanvas {
+  display: block;
+  margin: 20px auto;
+  background: #111;
+  border-radius: 14px;
+  touch-action: none;
+}
+
+.game-controls {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.game-controls button {
+  padding: 15px 20px;
+  font-size: 18px;
+  border-radius: 8px;
+  border: none;
+  background-color: #6a4fcf;
+  color: white;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.game-controls button:hover {
+  background-color: #5a3fc0;
+}
+
+/* ===== RESPONSIVO (MÓVIL) ===== */
+@media (max-width: 600px) {
+
+  .container {
+    padding: 15px;
+    margin: 15px auto;
   }
+
+  .hero {
+    height: 155px;
+  }
+
+  .hero-content {
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 0 5px;
+  }
+
+  .hero-avatar {
+    width: 120px;
+    top: -40px;
+  }
+
+  .hero-logo {
+    width: 100px;
+    top: 10px;
+  }
+
+  .main-nav a {
+    flex: 1 1 45%;
+  }
+
+  .social-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* Canvas ergonómico móvil */
+  #snakeCanvas {
+    width: 95vw;
+    height: 95vw;
+    max-width: 360px;
+    max-height: 360px;
+  }
+
+  /* Botones de juego móviles */
+  .game-controls button {
+    padding: 20px;
+    font-size: 20px;
+  }
+}
