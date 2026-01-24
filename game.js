@@ -7,7 +7,7 @@ const SnakeGame = (() => {
   let snake, direction, food, loop;
 
   // ====== CONTROLES TÁCTILES ======
-  let touchStartX = 0;
+  let touchStartX = 1;
   let touchStartY = 0;
 
   function handleTouchStart(e) {
@@ -116,7 +116,7 @@ const SnakeGame = (() => {
   function start() {
     stop();
     init();
-    loop = setInterval(update, 50);
+    loop = setInterval(update, 60);
   }
 
   function stop() {
