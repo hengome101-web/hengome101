@@ -1,13 +1,11 @@
 const SnakeGame = (() => {
 
   let canvas, ctx;
-  const size = 20;
-  const tileCount = 20;
-
+  let size, tileCount;
   let snake, direction, food, loop;
-
-  // ====== CONTROLES TÁCTILES ======
-  let touchStartX = 1;
+  
+  // ===== CONTROLES TÁCTILES =====
+  let touchStartX = 0;
   let touchStartY = 0;
 
   function handleTouchStart(e) {
@@ -30,10 +28,14 @@ const SnakeGame = (() => {
     }
   }
 
-  // ====== INICIO ======
+  // ===== INICIALIZAR =====
   function init() {
     canvas = document.getElementById("snakeCanvas");
     ctx = canvas.getContext("2d");
+
+    // Tamaño de tiles dinámico según canvas
+    tileCount = 20;
+    size = canvas.width / tileCount;
 
     snake = [{ x: 10, y: 10 }];
     direction = { x: 1, y: 0 };
@@ -52,7 +54,7 @@ const SnakeGame = (() => {
     };
   }
 
-  // ====== TECLADO (PC) ======
+  // ===== CONTROL TECLADO =====
   function keyControl(e) {
     switch (e.key) {
       case "ArrowUp":
@@ -70,17 +72,14 @@ const SnakeGame = (() => {
     }
   }
 
-  // ====== GAME LOOP ======
+  // ===== GAME LOOP =====
   function update() {
     ctx.fillStyle = "#111";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-    const head = {
-      x: snake[0].x + direction.x,
-      y: snake[0].y + direction.y
-    };
+    const head = { x: snake[0].x + direction.x, y: snake[0].y + direction.y };
 
-    // paredes
+    // choque con paredes
     if (head.x < 0 || head.y < 0 || head.x >= tileCount || head.y >= tileCount) {
       stop();
       return;
@@ -96,21 +95,20 @@ const SnakeGame = (() => {
 
     snake.unshift(head);
 
+    // comer comida
     if (head.x === food.x && head.y === food.y) {
       food = randomFood();
     } else {
       snake.pop();
     }
 
-    // comida
+    // dibujar comida
     ctx.fillStyle = "red";
     ctx.fillRect(food.x * size, food.y * size, size, size);
 
-    // snake
+    // dibujar snake
     ctx.fillStyle = "lime";
-    snake.forEach(p =>
-      ctx.fillRect(p.x * size, p.y * size, size - 1, size - 1)
-    );
+    snake.forEach(p => ctx.fillRect(p.x * size, p.y * size, size - 1, size - 1));
   }
 
   function start() {
@@ -123,6 +121,12 @@ const SnakeGame = (() => {
     clearInterval(loop);
   }
 
-  return { start, stop };
+  // ===== Exponer dirección para botones =====
+  return {
+    start,
+    stop,
+    get direction() { return direction; },
+    set direction(val) { direction = val; }
+  };
 
 })();
