@@ -7,7 +7,7 @@ const SnakeGame = (() => {
   let snake, direction, food, loop;
 
   // ====== CONTROLES TÁCTILES ======
-  let touchStartX = 1;
+  let touchStartX = 0;
   let touchStartY = 0;
 
   function handleTouchStart(e) {
@@ -36,7 +36,7 @@ const SnakeGame = (() => {
     ctx = canvas.getContext("2d");
 
     snake = [{ x: 10, y: 10 }];
-    direction = { x: 0, y: 0 };
+    direction = { x: 1, y: 0 };
     food = randomFood();
 
     document.addEventListener("keydown", keyControl);
