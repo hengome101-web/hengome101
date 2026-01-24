@@ -113,7 +113,7 @@ const SnakeGame = (() => {
   function start() {
     stop();
     init();
-    loop = setInterval(update, 400);
+    loop = setInterval(update, 1000);
   }
 
   function stop() {
