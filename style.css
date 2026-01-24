@@ -10,7 +10,7 @@ body {
 .container {
   max-width: 900px;
   margin: 40px auto;
-  background: none;
+  background: none; /* transparente para ver el gradiente */
   padding: 40px;
   border-radius: 15px;
 }
@@ -71,7 +71,7 @@ body {
 }
 
 .main-nav a {
-  background: #6a4fcf;
+  background: #6a4fcf; /* mantiene color morado */
   color: white;
   padding: 10px;
   border-radius: 5px;
